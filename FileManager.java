@@ -1,9 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
-
 public class FileManager {
-
-    public static void saveStudent(Student s) {
+ public static void saveStudent(Student s) {
         try {
             FileWriter writer = new FileWriter("students.txt", true);
             writer.write(s.getName() + "," + s.getId() + "\n");
@@ -12,7 +10,6 @@ public class FileManager {
             System.out.println("Error saving file");
         }
     }
-
     public static ArrayList<Student> loadStudents() {
         ArrayList<Student> list = new ArrayList<>();
 
