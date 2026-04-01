@@ -1,10 +1,10 @@
-public class Teacher extends User {
+public class Teacher {
+    private String name;
 
-public Teacher(String name, String id) {
-    super(name, id);
-}
- @Override
-    public void displayInfo() {
-        System.out.println("Teacher: " + name + " ID: " + id);
+    public Teacher(String name) {
+        this.name = name;
+    }
+    public String getName() {
+        return name;
     }
 }
