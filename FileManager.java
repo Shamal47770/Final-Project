@@ -2,8 +2,46 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FileManager {
+    public static void saveTeacher(Teacher t) {
+    try {
+        FileWriter writer = new FileWriter("teachers.txt", true);
+        writer.write(t.getName() + "\n");
+        writer.close();
+    } catch (IOException e) {
+        System.out.println("Error saving teacher");
+    }
+}
+    public static ArrayList<Teacher> loadTeachers() {
+    ArrayList<Teacher> teachers = new ArrayList<>();
 
+    try {
+        BufferedReader reader = new BufferedReader(new FileReader("teachers.txt"));
+        String line;
 
+        while ((line = reader.readLine()) != null) {
+            teachers.add(new Teacher(line));
+        }
+
+        reader.close();
+    } catch (IOException e) {
+        System.out.println("No teachers file yet");
+    }
+
+    return teachers;
+}
+    public static void saveAllTeachers(ArrayList<Teacher> teachers) {
+    try {
+        FileWriter writer = new FileWriter("teachers.txt");
+
+        for (Teacher t : teachers) {
+            writer.write(t.getName() + "\n");
+        }
+
+        writer.close();
+    } catch (IOException e) {
+        System.out.println("Error saving teachers");
+    }
+}
 
     public static void saveStudent(Student s) {
         try {
@@ -14,7 +52,6 @@ public class FileManager {
             System.out.println("Error saving student");
         }
     }
-
     public static ArrayList<Student> loadStudents() {
         ArrayList<Student> students = new ArrayList<>();
 
@@ -34,7 +71,6 @@ public class FileManager {
 
         return students;
     }
-
     public static void saveAllStudents(ArrayList<Student> students) {
         try {
             FileWriter writer = new FileWriter("students.txt"); 
@@ -48,9 +84,6 @@ public class FileManager {
             System.out.println("Error saving students");
         }
     }
-
-
-
     public static void saveCourse(Course c) {
         try {
             FileWriter writer = new FileWriter("courses.txt", true);
@@ -60,7 +93,6 @@ public class FileManager {
             System.out.println("Error saving course");
         }
     }
-
     public static ArrayList<Course> loadCourses() {
         ArrayList<Course> courses = new ArrayList<>();
 
@@ -79,7 +111,6 @@ public class FileManager {
 
         return courses;
     }
-
     public static void saveAllCourses(ArrayList<Course> courses) {
         try {
             FileWriter writer = new FileWriter("courses.txt");
